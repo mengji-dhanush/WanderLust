@@ -1,0 +1,83 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+.navbar{
+    background-color: white;
+}
+
+.fa-compass{
+    color: red;
+    font-size: 3rem;
+}
+
+.f-info-links a{
+    margin-right: 0.7rem;
+    text-decoration: none;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info{
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 8rem;
+}
+
+.f-info-socials,.f-info-links,.f-info-brands{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info-socials i{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+/* card */
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* show listing */
+.show-card{
+    margin-bottom: 0.5rem;
+    padding: 0;
+    height: 20rem;
+    width: 20rem;
+}
