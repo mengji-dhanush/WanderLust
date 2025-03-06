@@ -12,12 +12,12 @@
             <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
             <div class="row row-cols-1 row-cols-md-2">
                 <div class="col">
-                    <form method="get" action="http://localhost:8080/listings/edit/<%= listing._id %>">
+                    <form method="get" action="/listings/edit/<%= listing._id %>">
                         <button class="btn btn-dark mb-3">Edit</button>
                     </form>
                 </div>
                 <div class="col">
-                    <form method="post" action="http://localhost:8080/listings/<%= listing._id %>?_method=DELETE">
+                    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
                         <button class="btn mb-3 btn-danger">Delete</button>
                     </form>
                 </div>
