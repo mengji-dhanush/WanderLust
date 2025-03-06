@@ -1,21 +1,107 @@
 <% layout('/layouts/boilerplate') -%>
+<style>
+  .filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin-top: 1rem;
+  }
+  .filter {
+    opacity: 0.7;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .tax-info {
+    display: none;
+  }
+  .form-switch {
+    border: 1px black solid;
+    border-radius: 10px;
+    height: 2.7rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 <body>
-    <div class="row mt-3"><h1>All Listings</h1></div>
-    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-1">
-        <% for(let listing of allListings){%>
-            <a href="/listings/<%= listing._id %>" class="listing-link">
-            <div class="card col listing-card" style="width: 20rem;">
-                <img src="<%= listing.image.url%>" class="card-img-top" alt="Listing Image" style="height: 20rem;">
-                <div class="card-img-overlay">
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><b><%= listing.title %></b> <br>&#8377;<%= listing.price.toLocaleString('en-IN')%></p>
-                </div>
-            </div>
-            </a>
-        <%}%>
+  <div style="display: flex; justify-content: center; align-items: center">
+    <div class="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-sun"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Snow</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Pool</p>
+      </div>
     </div>
-    <!-- <form method="get" action="http://localhost:8080/listings/new">
+    <div>
+      <div
+        class="form-check form-switch"
+        style="position: relative; right: 0; cursor: pointer"
+      >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Display prices after tax</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-1 mt-3">
+    <% for(let listing of allListings){%>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col listing-card" style="width: 20rem">
+        <img
+          src="<%= listing.image.url%>"
+          class="card-img-top"
+          alt="Listing Image"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />&#8377;<%=
+            listing.price.toLocaleString('en-IN')%>
+            <span class="tax-info"><i>+18% GST</i></span>
+          </p>
+        </div>
+      </div>
+    </a>
+    <%}%>
+  </div>
+  <!-- <form method="get" action="http://localhost:8080/listings/new">
         <button>Add new Listing</button>
     </form> -->
 </body>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  let taxInfo = document.getElementsByClassName("tax-info");
+  taxSwitch.addEventListener("click", () => {
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
