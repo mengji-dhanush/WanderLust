@@ -12,8 +12,6 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.newListing = async (req, res, next) => {
-  // let {title,description,price,location,country}=req.body;
-  // console.log(req.body);
   const url = req.file.path;
   const filename = req.file.filename;
   let newListing = await new Listings(req.body.listing);
