@@ -5,7 +5,20 @@ const { isLoggedIn, isOwner, validateListing } = require("../middlewares.js");
 const listingController = require("../controllers/listings.js");
 const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
+const Listings = require("../models/listing.js");
+const ExpressError = require("../utils/ExpressError.js");
 const upload = multer({ storage });
+
+router.get(
+  "/search",
+  wrapAsync(async (req, res) => {
+    let { query } = req.query;
+    let queryListings = await Listings.find({
+      title: { $regex: query, $options: "i" },
+    });
+    res.render("listings/index.ejs", { allListings: queryListings });
+  })
+);
 
 router
   .route("/")
